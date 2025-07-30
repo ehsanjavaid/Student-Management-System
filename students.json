@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Ahsan",
+        "age": 24,
+        "marks": 85.0
+    },
+    {
+        "name": "Ali",
+        "age": 23,
+        "marks": 88.0
+    },
+    {
+        "name": "Ahmad",
+        "age": 25,
+        "marks": 84.0
+    }
+]
