@@ -13,5 +13,15 @@
         "name": "Ahmad",
         "age": 25,
         "marks": 84.0
+    },
+    {
+        "name": "Zubair",
+        "age": 65,
+        "marks": 55.0
+    },
+    {
+        "name": "zulkarnain",
+        "age": 12,
+        "marks": 88.0
     }
 ]
