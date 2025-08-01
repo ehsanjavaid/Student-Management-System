@@ -23,5 +23,10 @@
         "name": "zulkarnain",
         "age": 12,
         "marks": 88.0
+    },
+    {
+        "name": "Muharam",
+        "age": 25,
+        "marks": 55.0
     }
 ]
