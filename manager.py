@@ -1,6 +1,5 @@
 import sqlite3
 from student import Student
-from storage import file_load
 
 
 class studentmanager:
@@ -21,8 +20,6 @@ class studentmanager:
         conn.commit()
         conn.close()
 
-    def file_load(self):
-        self.students = file_load()
 
     def add_student(self, student: Student):
         conn = sqlite3.connect("students.db")
