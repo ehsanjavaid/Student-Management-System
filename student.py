@@ -1,14 +1,15 @@
 class Student():
-    def __init__(self, name, age, marks):
+    def __init__(self, name, age, grade, sid = None):
+        self.id = sid
         self.name = name
         self.age = age
-        self.marks = marks
+        self.grade = grade
 
     def to_dict(self):
         return {
             'name': self.name,
             'age': self.age,
-            'marks': self.marks
+            'grade': self.grade
         }
 
 
