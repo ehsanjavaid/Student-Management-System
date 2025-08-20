@@ -1,5 +1,6 @@
 from student import Student
 from storage import save_to_file, file_load
+from database import sqlite3
 
 class studentmanager:
     def __init__(self):
@@ -7,35 +8,30 @@ class studentmanager:
     def file_load(self):
         self.students = file_load()
 
-    def add_students(self):
-        name = input("Enter the student")
-        try:
-            age = int(input("enter the student age "))
-            marks = float(input("enter the student marks "))
-            self.students.append(Student(name, age, marks))
-            print("data added successfully")
-        except ValueError:
-            print("Invalid input ")
-
-    def view_students(self):
-        if not self.students:
-            print("student not found")
-        else:
-            print("\n --- student list ---")
-            for idx, s in enumerate(self.students, start=1):
-                print(f"{idx}. Name: {s.name}, Age: {s.age}, Marks: {s.marks}")
-
-    def search_students(self):
-        student = input("Enter student name")
-        found = [s for s in self.students if s.name.lower() == student.lower()]
-        if found:
-            for s in found:
-                print(f"Found:  Name: {s.name}, Age: {s.age}, Marks: {s.marks}")
-            else:
-                print("Student not found")
-    def create_student(self, name, age, marks):
-        return Student(name, age, marks)
+    def add_students(name, age, grade):
+        conn = sqlite3.connect("students.db")
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO students (name, age, grade) VALUES (?,?,?)", (name, age, grade))
+        conn.commit()
+        conn.close()
     
-    def save_to_file(self):
-        save_to_file(self.students)
-
+    def get_students():
+        conn = sqlite3.connect("students.db")
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM students")
+        rows = cursor.fetchall()
+        conn.close()
+        return rows
+    def update_students(student_id, name, age, grade):
+        conn = sqlite3.connect("students.db")
+        cursor = conn.cursor()
+        cursor.execute("UPDATE students GET name = ?, age = ?, grade = ?", (name, age, grade, student_id))
+        conn.commit()
+        conn.close()
+    def delete_students(student_id):
+        conn = sqlite3.connect("students.db")
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM students WHERE id = ?", (student_id))
+        conn.commit()
+        conn.close()
+    
